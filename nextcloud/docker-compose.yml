@@ -13,7 +13,7 @@ services:
       - traefik-public
     labels:
       - "traefik.backend=nextcloud"
-      - "traefik.docker.network=web"
+      - "traefik.docker.network=traefik-public"
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:cloud.unitygm.net"
       - "traefik.port=80"
