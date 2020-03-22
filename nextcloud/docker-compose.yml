@@ -9,8 +9,6 @@ services:
       # - ./nextcloud/config:/var/www/html/config # Pulls from local dir
       #- /mnt/someHDD/nextcloud:/mnt/hdd # Pulls from root
     
-    depends_on:
-      - db
     networks:
       - traefik-public
     labels:
