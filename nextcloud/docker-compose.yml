@@ -3,7 +3,6 @@ version: '3'
 services:
   nextcloud:
     image: nextcloud:latest
-    restart: always
     volumes:
       - nextcloud:/var/www/html # Pulls from /var/lib/docker/volumes/nextcloud_nextcloud/_data/
       #- ./nextcloud/config:/var/www/html/config # Pulls from local dir
