@@ -17,6 +17,11 @@ services:
       - traefik.enable=true
       - traefik.frontend.rule=Host:cloud.unitygm.net
       - traefik.port=80
+      # Traefik service that listens to HTTP
+      - traefik.redirectorservice.frontend.entryPoints=http
+      - traefik.redirectorservice.frontend.redirect.entryPoint=https
+      # Traefik service that listens to HTTPS
+      - traefik.webservice.frontend.entryPoints=https
 
  
 networks:
