@@ -1,14 +1,19 @@
-version: '3'
-
 services:
-  nextcloud:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - internal
+
+  app:
     image: nextcloud:latest
     restart: always
     volumes:
       - nextcloud:/var/www/html # Pulls from /var/lib/docker/volumes/nextcloud_nextcloud/_data/
-      # - ./nextcloud/config:/var/www/html/config # Pulls from local dir
+      #- ./nextcloud/config:/var/www/html/config # Pulls from local dir
       #- /mnt/someHDD/nextcloud:/mnt/hdd # Pulls from root
-    
     networks:
       - traefik-public
     labels:
@@ -18,10 +23,10 @@ services:
       - "traefik.frontend.rule=Host:cloud.unitygm.net"
       - "traefik.port=80"
 
-  
 networks:
   traefik-public:
     external: true
 
 volumes:
+  db:
   nextcloud:
